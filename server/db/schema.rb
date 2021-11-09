@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_064001) do
+ActiveRecord::Schema.define(version: 2021_11_09_065554) do
 
   create_table "devices", charset: "utf8mb4", force: :cascade do |t|
     t.string "fingerpint"
@@ -29,5 +29,16 @@ ActiveRecord::Schema.define(version: 2021_11_09_064001) do
     t.index ["device_id"], name: "index_photographs_on_device_id"
   end
 
+  create_table "vieweds", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "photograph_id", null: false
+    t.bigint "device_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["device_id"], name: "index_vieweds_on_device_id"
+    t.index ["photograph_id"], name: "index_vieweds_on_photograph_id"
+  end
+
   add_foreign_key "photographs", "devices"
+  add_foreign_key "vieweds", "devices"
+  add_foreign_key "vieweds", "photographs"
 end
