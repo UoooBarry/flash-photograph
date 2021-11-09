@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fingerpint: MyString
+  user_agent: MyString
+  last_ip: MyString
+
+two:
+  fingerpint: MyString
+  user_agent: MyString
+  last_ip: MyString
