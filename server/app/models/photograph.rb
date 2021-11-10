@@ -1,5 +1,5 @@
 class Photograph < ApplicationRecord
-  belongs_to :device
+  has_one :device
 
   validates :duration, presence: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_065554) do
+ActiveRecord::Schema.define(version: 2021_11_10_030934) do
 
   create_table "devices", charset: "utf8mb4", force: :cascade do |t|
     t.string "fingerpint"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_065554) do
   end
 
   create_table "photographs", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "device_id", null: false
+    t.bigint "device_id"
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

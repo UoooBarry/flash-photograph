@@ -1,6 +1,8 @@
-require_relative "boot"
+require_relative 'boot'
+require_relative '../lib/middlewares/request_map_device'
 
-require "rails/all"
+require 'rails/all'
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,6 +12,9 @@ module Server
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+
+    config.eager_load_paths << Rails.root.join('lib/middlewares')
+    config.middleware.use ::RequestMapDevice
 
     # Configuration for the application, engines, and railties goes here.
     #

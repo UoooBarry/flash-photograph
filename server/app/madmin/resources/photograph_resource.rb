@@ -7,7 +7,7 @@ class PhotographResource < Madmin::Resource
   attribute :url
 
   # Associations
-  attribute :device
+  # attribute :device
 
   # Uncomment this to customize the display name of records in the admin area.
   # def self.display_name(record)
