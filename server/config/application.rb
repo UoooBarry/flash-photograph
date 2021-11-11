@@ -1,5 +1,7 @@
 require_relative 'boot'
 require_relative '../lib/middlewares/request_map_device'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 
 require 'rails/all'
 

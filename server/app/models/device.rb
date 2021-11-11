@@ -1,5 +1,6 @@
 class Device < ApplicationRecord
   has_many :vieweds
+  has_many :photographs
 
   scope :system_device, -> { find_by(user_agent: 'System', last_ip: '0.0.0.0') }
 
