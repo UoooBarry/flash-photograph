@@ -60,14 +60,13 @@ export default {
       );
       if (sucess) {
         toast.success("Upload Success");
-        store.dispatch('loading/finish');
         router.push({ path: `/flash/${photograph.id}` });
       } else {
         errors.forEach((error) => {
           toast.error(error);
         });
       }
-      console.log(bodyFormData);
+      store.dispatch('loading/finish');
     };
 
     const changImage = (e) => {
