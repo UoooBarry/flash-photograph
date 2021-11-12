@@ -93,12 +93,12 @@ export default {
 }
 
 .photograph_image {
-  height: 90vh;
-  min-height: 90vh;
-  max-height: 90vh;
-  width: 95vw;
+  max-height: 50vh;
+  height: 50vh;
+  min-height: 50vh;
+  max-width: 100%;
+  width: 100%;
   min-width: 95vw;
-  max-width: 95vw;
   border: 1px solid #ccc;
 }
 
