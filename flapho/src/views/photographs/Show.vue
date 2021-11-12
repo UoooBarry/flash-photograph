@@ -16,7 +16,7 @@
       <h1>{{ ableToView ? `${photograph.duration}s` : "Not able to view" }}</h1>
     </div>
     <div class="top-bar">
-      <span class="share-span">share</span>
+      <a href='/new' class="share-span">分享自己的图片</a>
     </div>
   </div>
 </template>
@@ -101,8 +101,11 @@ export default {
 .share-span {
   font-size: 1rem;
   color: #fff;
-  background-color: rgb(41, 172, 8);
-  padding: 0.5rem;
+  background-color: rgb(0, 0, 0);
+  text-decoration: none;
+  width: 100%;
+  border: 0px;
+  padding: 0.8rem;
   border-radius: 5px;
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div class='blurred'>
-    <span class='hint' v-if="ableToView">Tap to view</span>
+    <span class='hint' v-if="ableToView">轻点可查看图片</span>
   </div>
 </template>
 
