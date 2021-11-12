@@ -45,9 +45,9 @@ export default {
 
     const getPhotographData = async (id) => {
       try {
-        store.commit('loading/load');
+        store.dispatch('loading/load');
         const data = await getPhotograph(id);
-        store.commit('loading/finish');
+        store.dispatch('loading/finish');
         return data;
       } catch (error) {
         console.log(error);

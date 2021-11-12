@@ -50,7 +50,7 @@ export default {
     const store = useStore();
 
     const submitForm = async () => {
-      store.commit('loading/load');
+      store.dispatch('loading/load');
       const bodyFormData = new FormData();
       bodyFormData.append("image", image.value);
       bodyFormData.append("duration", duration.value);
@@ -60,7 +60,7 @@ export default {
       );
       if (sucess) {
         toast.success("Upload Success");
-        store.commit('loading/finish');
+        store.dispatch('loading/finish');
         router.push({ path: `/flash/${photograph.id}` });
       } else {
         errors.forEach((error) => {
