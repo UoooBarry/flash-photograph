@@ -55,17 +55,14 @@ export default {
       bodyFormData.append("image", image.value);
       bodyFormData.append("duration", duration.value);
 
-      const { sucess, photograph, errors } = await createPhotograph(
+      const { sucess, photograph } = await createPhotograph(
         bodyFormData
       );
       if (sucess) {
         toast.success("Upload Success");
         router.push({ path: `/flash/${photograph.id}` });
-      } else {
-        errors.forEach((error) => {
-          toast.error(error);
-        });
       }
+
       store.dispatch('loading/finish');
     };
 

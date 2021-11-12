@@ -8,4 +8,8 @@ const createPhotograph = (form) => {
   return service.post('/photographs', form, { headers: { 'Content-Type': 'multipart/form-data' } });
 }
 
-export { getPhotograph, createPhotograph };
+const tapPhotograph = (id) => {
+  return service.post(`/photographs/${id}/tap`);
+}
+
+export { getPhotograph, createPhotograph, tapPhotograph };

@@ -15,8 +15,14 @@ module Api
       if @photograph.save
         render_response(sucess: true, photograph: @photograph)
       else
-        render_response(sucess: false, errors: @photograph.errors.full_messages)
+        render_process_entity_errors(@photograph)
       end
+    end
+
+    def tap
+      @viewed = Viewed.find_by(device: @device, photograph_id: params[:id])
+
+      @viewed.tap!
     end
 
     private
@@ -30,11 +36,11 @@ module Api
 
       @viewed = Viewed.find_or_initialize_by(device: @device, photograph_id: params[:id])
 
-      if @viewed.new_record?
+      if @viewed.tapped?
+        render_response(able_to_view: false)
+      else
         @viewed.save
         yield
-      else
-        render_response(able_to_view: false)
       end
     end
   end

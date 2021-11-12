@@ -23,7 +23,7 @@
 
 <script>
 import { onMounted, ref, computed } from "vue";
-import { getPhotograph } from "@/api/photograph_api";
+import { getPhotograph, tapPhotograph } from "@/api/photograph_api";
 import getFullFile from "@/utils/get_full_file";
 import { useRoute } from "vue-router";
 import Blurred from "@/components/Blurred";
@@ -61,8 +61,10 @@ export default {
       photograph.value = response.photograph;
     });
 
-    const onTap = () => {
+    const onTap = async () => {
       if (tapped.value) return;
+
+      await tapPhotograph(id);
       const timer = setInterval(async () => {
         photograph.value.duration -= 1;
         if (photograph.value.duration === 0) {
