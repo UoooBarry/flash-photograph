@@ -4,6 +4,6 @@ class Photograph < ApplicationRecord
   mount_uploader :url, ::ImageUploader
   alias_attribute :image, :url
 
-  validates :duration, presence: true
-  validates :duration, :inclusion => 1..10
+  validates :duration, :url, presence: true
+  validates :duration, inclusion: 1..10
 end
