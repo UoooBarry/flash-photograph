@@ -16,7 +16,7 @@
       <h1>{{ ableToView ? `${photograph.duration}s` : "已经查看过了" }}</h1>
     </div>
     <div class="top-bar">
-      <a href='/new' class="share-span">分享自己的图片</a>
+      <a href="/new" class="share-span">分享自己的图片</a>
     </div>
   </div>
 </template>
@@ -28,15 +28,18 @@ import getFullFile from "@/utils/get_full_file";
 import { useRoute } from "vue-router";
 import Blurred from "@/components/Blurred";
 import { useStore } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "Photograph",
   components: {
     Blurred,
   },
+  computed: {
+    ...mapState("loading", ["loading"]),
+  },
   setup() {
     const photograph = ref({});
-    const loading = ref(true);
     const tapped = ref(false);
     const finishedViewed = ref(false);
     const ableToView = ref(true);
@@ -45,9 +48,9 @@ export default {
 
     const getPhotographData = async (id) => {
       try {
-        store.dispatch('loading/load');
+        store.dispatch("loading/load");
         const data = await getPhotograph(id);
-        store.dispatch('loading/finish');
+        store.dispatch("loading/finish");
         return data;
       } catch (error) {
         console.log(error);
@@ -79,11 +82,10 @@ export default {
     return {
       ableToView,
       photograph,
-      loading,
       tapped,
       onTap,
       finishedViewed,
-      getFullFile
+      getFullFile,
     };
   },
 };
