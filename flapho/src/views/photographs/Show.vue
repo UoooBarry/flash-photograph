@@ -3,7 +3,7 @@
     <div class="photograph">
       <div class="photograph_image" v-if="!loading && ableToView">
         <img
-          :src="getFullFile(photograph.url.url)"
+          :src="getFullFile(photograph.url.fit_box.url)"
           alt="photo"
           v-if="tapped && !finishedViewed"
         />
@@ -13,7 +13,7 @@
       <div class="photograph_image" v-else>
         <Blurred />
       </div>
-      <h1>{{ ableToView ? `${photograph.duration}s` : "Not able to view" }}</h1>
+      <h1>{{ ableToView ? `${photograph.duration}s` : "已经查看过了" }}</h1>
     </div>
     <div class="top-bar">
       <a href='/new' class="share-span">分享自己的图片</a>
