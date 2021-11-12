@@ -94,14 +94,18 @@ export default {
 
 .photograph_image {
   height: 90vh;
+  min-height: 90vh;
+  max-height: 90vh;
   width: 95vw;
+  min-width: 95vw;
+  max-width: 95vw;
   border: 1px solid #ccc;
 }
 
 .photograph_image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .share-span {
