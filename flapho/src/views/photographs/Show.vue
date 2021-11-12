@@ -98,6 +98,12 @@ export default {
   border: 1px solid #ccc;
 }
 
+.photograph_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .share-span {
   font-size: 1rem;
   color: #fff;
