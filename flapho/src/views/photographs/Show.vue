@@ -27,6 +27,7 @@ import { getPhotograph } from "@/api/photograph_api";
 import getFullFile from "@/utils/get_full_file";
 import { useRoute } from "vue-router";
 import Blurred from "@/components/Blurred";
+import { useStore } from "vuex";
 
 export default {
   name: "Photograph",
@@ -40,12 +41,13 @@ export default {
     const finishedViewed = ref(false);
     const ableToView = ref(true);
     const { id } = useRoute().params;
+    const store = useStore();
 
     const getPhotographData = async (id) => {
       try {
-        loading.value = true;
+        store.commit('loading/load');
         const data = await getPhotograph(id);
-        loading.value = false;
+        store.commit('loading/finish');
         return data;
       } catch (error) {
         console.log(error);

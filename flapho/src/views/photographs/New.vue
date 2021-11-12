@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
 import { ref } from "vue";
 import { useToast } from "vue-toastification";
 import { createPhotograph } from "@/api/photograph_api";
@@ -46,8 +47,10 @@ export default {
     const preview = ref("");
     const toast = useToast();
     const router = useRouter();
+    const store = useStore();
 
     const submitForm = async () => {
+      store.commit('loading/load');
       const bodyFormData = new FormData();
       bodyFormData.append("image", image.value);
       bodyFormData.append("duration", duration.value);
@@ -57,6 +60,7 @@ export default {
       );
       if (sucess) {
         toast.success("Upload Success");
+        store.commit('loading/finish');
         router.push({ path: `/flash/${photograph.id}` });
       } else {
         errors.forEach((error) => {
