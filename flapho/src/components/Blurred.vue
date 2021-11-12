@@ -12,9 +12,6 @@ export default {
       default: false
     }
   },
-  setup(props) {
-    console.log(props.ableToView)
-  }
 }
 </script>
 

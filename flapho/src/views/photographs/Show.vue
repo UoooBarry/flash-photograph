@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="photograph">
-      <div class="photograph_image" v-if="!loading && ableToView">
+      <div class="photograph_image" v-if="ableToView">
         <img
           :src="getFullFile(photograph.url.fit_box.url)"
           alt="photo"
@@ -22,21 +22,17 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { getPhotograph } from "@/api/photograph_api";
 import getFullFile from "@/utils/get_full_file";
 import { useRoute } from "vue-router";
 import Blurred from "@/components/Blurred";
 import { useStore } from "vuex";
-import { mapState } from "vuex";
 
 export default {
   name: "Photograph",
   components: {
     Blurred,
-  },
-  computed: {
-    ...mapState("loading", ["loading"]),
   },
   setup() {
     const photograph = ref({});
@@ -45,6 +41,8 @@ export default {
     const ableToView = ref(true);
     const { id } = useRoute().params;
     const store = useStore();
+
+    const loading = computed(() => store.state.loading.loading);
 
     const getPhotographData = async (id) => {
       try {
@@ -86,6 +84,7 @@ export default {
       onTap,
       finishedViewed,
       getFullFile,
+      loading
     };
   },
 };

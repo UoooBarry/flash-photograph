@@ -3,7 +3,7 @@
     <template v-if="loading">
       <div class="loader"><Loader /></div>
     </template>
-    <router-view v-else />
+    <router-view :display=" loading ? 'none' : 'block' " />
   </div>
 </template>
 
