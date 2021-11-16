@@ -50,20 +50,18 @@ export default {
     const store = useStore();
 
     const submitForm = async () => {
-      store.dispatch('loading/load');
+      store.dispatch("loading/load");
       const bodyFormData = new FormData();
       bodyFormData.append("image", image.value);
       bodyFormData.append("duration", duration.value);
 
-      const { sucess, photograph } = await createPhotograph(
-        bodyFormData
-      );
+      const { sucess, photograph } = await createPhotograph(bodyFormData);
       if (sucess) {
         toast.success("Upload Success");
         router.push({ path: `/flash/${photograph.id}` });
       }
 
-      store.dispatch('loading/finish');
+      store.dispatch("loading/finish");
     };
 
     const changImage = (e) => {
@@ -99,9 +97,11 @@ export default {
 }
 
 .photograph_image img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .duration {

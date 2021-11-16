@@ -3,7 +3,7 @@
     <div class="photograph">
       <div class="photograph_image" v-if="ableToView">
         <img
-          :src="getFullFile(photograph.url.fit_box.url)"
+          :src="getFullFile(photograph.url.url)"
           alt="photo"
           v-if="tapped && !finishedViewed"
         />
@@ -86,7 +86,7 @@ export default {
       onTap,
       finishedViewed,
       getFullFile,
-      loading
+      loading,
     };
   },
 };
@@ -108,9 +108,11 @@ export default {
 }
 
 .photograph_image img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .share-span {

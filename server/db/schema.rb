@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_084253) do
+ActiveRecord::Schema.define(version: 2021_11_15_065344) do
 
   create_table "devices", charset: "utf8mb4", force: :cascade do |t|
     t.string "fingerpint"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_11_12_084253) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "url"
+    t.integer "image_width"
+    t.integer "image_height"
     t.index ["device_id"], name: "index_photographs_on_device_id"
   end
 

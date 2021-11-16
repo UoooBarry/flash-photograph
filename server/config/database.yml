@@ -15,3 +15,10 @@ development:
   password: 'root'
   database: flash_photograph
   host: localhost
+
+production:
+  <<: *default
+  username: 'root'
+  password: <%= ENV["FLASH_PHOTOGRAPH_DB_PASS"] %>
+  database: flash_photograph
+  host: localhost
