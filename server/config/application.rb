@@ -5,7 +5,6 @@ require 'carrierwave/orm/activerecord'
 
 require 'rails/all'
 
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -16,6 +15,7 @@ module Server
     config.load_defaults 6.1
 
     config.eager_load_paths << Rails.root.join('lib/middlewares')
+    config.eager_load_paths << Rails.root.join('lib/services')
     config.middleware.use ::RequestMapDevice
 
     # Configuration for the application, engines, and railties goes here.
